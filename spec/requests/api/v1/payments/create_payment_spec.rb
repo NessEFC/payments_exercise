@@ -11,9 +11,9 @@ RSpec.describe 'Create a payment for a given loan', type: :request do
       payment = Payment.last
 
       assert_response :success
-      assert(response).to be_success
-      assert(payment.amount).to eq(payment_amount)
-      assert(payment.loan_id).to eq(loan.id)
+      expect(response).to be_success
+      expect(payment.amount).to eq(payment_amount)
+      expect(payment.loan_id).to eq(loan.id)
       assert(payment.created_at)
       assert(payment.updated_at)
     end
