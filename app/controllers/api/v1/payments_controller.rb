@@ -7,6 +7,7 @@ class Api::V1::PaymentsController < ApplicationController
     payment = loan.payments.new(payment_params)
 
     if payment.save
+      loan.update_outstanding_balance(payment.amount)
       render json: payment
     end
   end
