@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+gem 'active_model_serializers', '~> 0.10.2'
 gem 'jbuilder', '~> 2.0'
 gem 'rails', '4.2.4'
 gem 'sdoc', '~> 0.4.0', group: :doc
