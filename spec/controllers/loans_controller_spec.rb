@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LoansController, type: :controller do
+RSpec.describe Api::V1::LoansController, type: :controller do
   describe '#index' do
     it 'responds with a 200' do
       get :index
