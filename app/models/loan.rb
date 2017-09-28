@@ -1,6 +1,9 @@
 class Loan < ActiveRecord::Base
   before_create :set_default_outstanding_balance
 
+  validates :funded_amount, presence: true
+  validates :outstanding_balance, presence: true
+
   has_many :payments
 
   def update_outstanding_balance(payment_amount)

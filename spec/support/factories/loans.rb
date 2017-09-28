@@ -3,5 +3,7 @@ FactoryGirl.define do
     sequence :funded_amount do |n|
       (100..1000).to_a.sample + n
     end
+
+    outstanding_balance :funded_amount
   end
 end
