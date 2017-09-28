@@ -9,6 +9,10 @@ class Api::V1::PaymentsController < ApplicationController
     if payment.save
       loan.update_outstanding_balance(payment.amount)
       render json: payment
+    else
+      render status: 400, json: {
+        errors: payment.errors.full_messages
+      }.to_json
     end
   end
 

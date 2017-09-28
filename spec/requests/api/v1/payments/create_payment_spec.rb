@@ -18,4 +18,18 @@ RSpec.describe 'Create a payment for a given loan', type: :request do
       assert(payment.updated_at)
     end
   end
+
+  context 'when payment exceeds the balance' do
+    it 'fails to save the payment' do
+      loan = create(:loan, funded_amount: 100.00)
+      payment_amount = loan.funded_amount * 2
+
+      post "/api/v1/loans/#{loan.id}/payments", { amount: payment_amount }
+
+      error_response = JSON.parse(response.body)
+
+      expect(response.status).to eq(400)
+      expect(error_response['errors'][0]).to eq('Amount of payment must not exceed the outstanding loan balance')
+    end
+  end
 end
