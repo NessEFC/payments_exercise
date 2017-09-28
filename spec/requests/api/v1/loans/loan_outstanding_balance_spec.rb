@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Show the outstanding balance', type: :request do
   context 'for a single loan' do
     it 'displays the balance' do
-      loan = create(:loan)
+      loan = create(:loan, funded_amount: 1000.00)
       payment_1 = 100.00
       payment_2 = 200.00
 
@@ -28,7 +28,7 @@ RSpec.describe 'Show the outstanding balance', type: :request do
 
   context 'for all loans' do
     it 'displays all balances' do
-      loan_1, loan_2 = create_list(:loan, 2)
+      loan_1, loan_2 = create_list(:loan, 2, funded_amount: 1000.00)
       payment_1 = 100.00
       payment_2 = 200.00
       payment_3 = 500.00
